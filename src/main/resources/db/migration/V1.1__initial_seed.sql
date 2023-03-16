@@ -38,3 +38,14 @@ INSERT INTO fuel_types("id", "name", "description")
 VALUES
     (1, 'petrol', 'the vehicle uses petrol fuel'),
     (2, 'diesel', 'the vehicle uses diesel');
+
+INSERT INTO payment_channels("id", "name", "description")
+VALUES
+    (1, 'cash', 'cash payment'),
+    (2, 'mobile-money', 'mobile money payments'),
+    (3, 'card', 'debit or credit cards');
+
+INSERT INTO transaction_types("id", "name", "description")
+VALUES
+    (1, 'reservation_payment', 'payment for car reservation'),
+    (2, 'damage_payment', 'payment for damages incurred on the vehicle');
