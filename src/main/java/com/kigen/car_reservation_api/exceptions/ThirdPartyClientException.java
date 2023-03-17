@@ -6,25 +6,23 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-@Data
 @ResponseStatus(HttpStatus.BAD_REQUEST)
+@Data
 @EqualsAndHashCode(callSuper = false)
-public class InvalidInputException extends RuntimeException {
+public class ThirdPartyClientException extends RuntimeException {
     
     private static final long serialVersionUID = 1L;
 
     private String exception_msg;
 
-    private String invalidField;
+    private Object content;
 
-    public InvalidInputException(String exception) {
-        super(exception);
-        this.exception_msg = exception;
-    }
+    private HttpStatus statusCode;
 
-    public InvalidInputException(String exception, String field) {
+    public ThirdPartyClientException(HttpStatus statusCode, String exception, Object content) {
         super(exception);
-        this.exception_msg = exception;
-        this.invalidField = field;
+        this.setException_msg(exception);
+        this.setContent(content);
+        setStatusCode(statusCode);
     }
 }
