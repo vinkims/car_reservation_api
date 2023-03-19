@@ -15,7 +15,7 @@ public class VContactTypeNameValid implements ConstraintValidator<IsContactTypeN
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        return value == null ? true ? !sContactType.checkExistsByName(value);
+        return value == null ? true : !sContactType.checkExistsByName(value);
     }
     
 }

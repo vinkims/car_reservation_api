@@ -13,15 +13,15 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-import com.kigen.car_reservation_api.validators.VContactTypeNameValid;
+import com.kigen.car_reservation_api.validators.VFuelTypeNameValid;
 
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({FIELD, ANNOTATION_TYPE, PARAMETER, TYPE})
-@Constraint(validatedBy = VContactTypeNameValid.class)
-public @interface IsContactTypeNameValid {
+@Constraint(validatedBy = VFuelTypeNameValid.class)
+public @interface IsFuelTypeNameValid {
     
-    String message() default "Invalid contact type name; provided value already in use";
+    String message() default "Invalid fuel type name; provided name already in use";
 
     Class<?>[] groups() default {};
 
