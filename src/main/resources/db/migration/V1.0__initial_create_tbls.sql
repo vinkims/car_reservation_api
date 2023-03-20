@@ -118,7 +118,7 @@ CREATE TABLE IF NOT EXISTS reviews (
 CREATE TABLE IF NOT EXISTS countries (
     "id" SMALLSERIAL PRIMARY KEY,
     "name" VARCHAR(50) NOT NULL UNIQUE,
-    "currency" CHAR(2)
+    "currency" CHAR(3)
 );
 
 -- regions
