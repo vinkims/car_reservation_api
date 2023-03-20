@@ -13,15 +13,13 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-import com.kigen.car_reservation_api.validators.VPaymentChannelNameValid;
-
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({FIELD, ANNOTATION_TYPE, PARAMETER, TYPE})
-@Constraint(validatedBy = VPaymentChannelNameValid.class)
-public @interface IsPaymentChannelNameValid {
+@Constraint(validatedBy = VCivilIdentityValid.class)
+public @interface IsCivilIdentityValid {
 
-    String message() default "Invalid payment channel name; provided value already in use";
+    String message() default "Invalid civil identity value; provided value already in use";
 
     Class<?>[] groups() default {};
 

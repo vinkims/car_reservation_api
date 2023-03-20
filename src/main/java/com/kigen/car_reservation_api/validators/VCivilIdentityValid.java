@@ -6,18 +6,18 @@ import javax.validation.ConstraintValidatorContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.kigen.car_reservation_api.annotations.IsFuelTypeNameValid;
-import com.kigen.car_reservation_api.services.vehicle.IFuelType;
+import com.kigen.car_reservation_api.annotations.IsCivilIdentityValid;
+import com.kigen.car_reservation_api.services.user.IUserCivilIdentity;
 
 @Component
-public class VFuelTypeNameValid implements ConstraintValidator<IsFuelTypeNameValid, String> {
+public class VCivilIdentityValid implements ConstraintValidator<IsCivilIdentityValid, String> {
 
     @Autowired
-    private IFuelType sFuelType;
+    private IUserCivilIdentity sUserCivilIdentity;
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        return value == null ? true : !sFuelType.checkExistsByName(value);
+        return value == null ? true : !sUserCivilIdentity.checkExistsByCivilIdentityValue(value);
     }
     
 }

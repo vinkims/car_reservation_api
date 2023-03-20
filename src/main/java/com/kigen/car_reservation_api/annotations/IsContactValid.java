@@ -13,17 +13,19 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-import com.kigen.car_reservation_api.validators.VPaymentChannelNameValid;
+import com.kigen.car_reservation_api.validators.VContactValid;
 
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({FIELD, ANNOTATION_TYPE, PARAMETER, TYPE})
-@Constraint(validatedBy = VPaymentChannelNameValid.class)
-public @interface IsPaymentChannelNameValid {
-
-    String message() default "Invalid payment channel name; provided value already in use";
+@Constraint(validatedBy = VContactValid.class)
+public @interface IsContactValid {
+    
+    String message() default "Invalid user contact; provided contact value already in use";
 
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
+
+    boolean apply() default false;
 }

@@ -4,10 +4,12 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.kigen.car_reservation_api.annotations.IsContactTypeNameValid;
 import com.kigen.car_reservation_api.services.contact.IContactType;
 
+@Component
 public class VContactTypeNameValid implements ConstraintValidator<IsContactTypeNameValid, String> {
 
     @Autowired
