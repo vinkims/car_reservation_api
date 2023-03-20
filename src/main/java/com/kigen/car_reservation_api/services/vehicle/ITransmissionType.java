@@ -1,4 +1,4 @@
-package com.kigen.car_reservation_api.services.transmissionType;
+package com.kigen.car_reservation_api.services.vehicle;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.data.domain.Page;
 
 import com.kigen.car_reservation_api.dtos.general.PageDTO;
-import com.kigen.car_reservation_api.dtos.transmissionType.TransmissionTypeDTO;
+import com.kigen.car_reservation_api.dtos.vehicle.TransmissionTypeDTO;
 import com.kigen.car_reservation_api.models.ETransmissionType;
 
 public interface ITransmissionType {

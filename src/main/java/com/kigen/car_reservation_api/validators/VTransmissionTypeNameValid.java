@@ -6,7 +6,7 @@ import javax.validation.ConstraintValidatorContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.kigen.car_reservation_api.annotations.IsTransmissionTypeNameValid;
-import com.kigen.car_reservation_api.services.transmissionType.ITransmissionType;
+import com.kigen.car_reservation_api.services.vehicle.ITransmissionType;
 
 public class VTransmissionTypeNameValid implements ConstraintValidator<IsTransmissionTypeNameValid, String> {
 

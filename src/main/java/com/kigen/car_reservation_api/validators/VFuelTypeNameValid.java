@@ -6,7 +6,7 @@ import javax.validation.ConstraintValidatorContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.kigen.car_reservation_api.annotations.IsFuelTypeNameValid;
-import com.kigen.car_reservation_api.services.fuelType.IFuelType;
+import com.kigen.car_reservation_api.services.vehicle.IFuelType;
 
 public class VFuelTypeNameValid implements ConstraintValidator<IsFuelTypeNameValid, String> {
 

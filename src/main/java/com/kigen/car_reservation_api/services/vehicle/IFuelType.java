@@ -1,12 +1,12 @@
-package com.kigen.car_reservation_api.services.fuelType;
+package com.kigen.car_reservation_api.services.vehicle;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 
-import com.kigen.car_reservation_api.dtos.fuelType.FuelTypeDTO;
 import com.kigen.car_reservation_api.dtos.general.PageDTO;
+import com.kigen.car_reservation_api.dtos.vehicle.FuelTypeDTO;
 import com.kigen.car_reservation_api.models.EFuelType;
 
 public interface IFuelType {

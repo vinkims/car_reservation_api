@@ -21,13 +21,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kigen.car_reservation_api.dtos.fuelType.FuelTypeDTO;
 import com.kigen.car_reservation_api.dtos.general.PageDTO;
+import com.kigen.car_reservation_api.dtos.vehicle.FuelTypeDTO;
 import com.kigen.car_reservation_api.exceptions.NotFoundException;
 import com.kigen.car_reservation_api.models.EFuelType;
 import com.kigen.car_reservation_api.responses.SuccessPaginatedResponse;
 import com.kigen.car_reservation_api.responses.SuccessResponse;
-import com.kigen.car_reservation_api.services.fuelType.IFuelType;
+import com.kigen.car_reservation_api.services.vehicle.IFuelType;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 

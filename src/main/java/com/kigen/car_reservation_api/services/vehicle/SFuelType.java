@@ -1,4 +1,4 @@
-package com.kigen.car_reservation_api.services.fuelType;
+package com.kigen.car_reservation_api.services.vehicle;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -11,8 +11,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import com.kigen.car_reservation_api.dtos.fuelType.FuelTypeDTO;
 import com.kigen.car_reservation_api.dtos.general.PageDTO;
+import com.kigen.car_reservation_api.dtos.vehicle.FuelTypeDTO;
 import com.kigen.car_reservation_api.exceptions.InvalidInputException;
 import com.kigen.car_reservation_api.models.EFuelType;
 import com.kigen.car_reservation_api.repositories.FuelTypeDAO;

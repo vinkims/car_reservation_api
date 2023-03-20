@@ -6,6 +6,7 @@ import javax.validation.ConstraintValidatorContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.kigen.car_reservation_api.annotations.IsTransactionTypeNameValid;
+import com.kigen.car_reservation_api.services.payment.ITransactionType;
 
 public class VTransactionTypeNameValid implements ConstraintValidator<IsTransactionTypeNameValid, String> {
 
