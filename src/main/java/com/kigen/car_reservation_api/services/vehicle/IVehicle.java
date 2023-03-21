@@ -1,5 +1,6 @@
 package com.kigen.car_reservation_api.services.vehicle;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,7 +8,7 @@ import org.springframework.data.domain.Page;
 
 import com.kigen.car_reservation_api.dtos.general.PageDTO;
 import com.kigen.car_reservation_api.dtos.vehicle.VehicleDTO;
-import com.kigen.car_reservation_api.models.EVehicle;
+import com.kigen.car_reservation_api.models.vehicle.EVehicle;
 
 public interface IVehicle {
     
@@ -21,5 +22,6 @@ public interface IVehicle {
 
     void save(EVehicle vehicle);
 
-    EVehicle update(EVehicle vehicle, VehicleDTO vehicleDTO);
+    EVehicle update(EVehicle vehicle, VehicleDTO vehicleDTO) throws IllegalAccessException, 
+        IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException;
 }

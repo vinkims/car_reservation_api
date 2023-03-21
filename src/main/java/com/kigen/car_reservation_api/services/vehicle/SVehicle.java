@@ -1,5 +1,7 @@
 package com.kigen.car_reservation_api.services.vehicle;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -16,12 +18,12 @@ import com.kigen.car_reservation_api.dtos.general.PageDTO;
 import com.kigen.car_reservation_api.dtos.vehicle.VehicleDTO;
 import com.kigen.car_reservation_api.dtos.vehicle.VehicleModelDTO;
 import com.kigen.car_reservation_api.exceptions.InvalidInputException;
-import com.kigen.car_reservation_api.models.EFuelType;
-import com.kigen.car_reservation_api.models.EStatus;
-import com.kigen.car_reservation_api.models.ETransmissionType;
-import com.kigen.car_reservation_api.models.EVehicle;
-import com.kigen.car_reservation_api.models.EVehicleModel;
-import com.kigen.car_reservation_api.repositories.VehicleDAO;
+import com.kigen.car_reservation_api.models.status.EStatus;
+import com.kigen.car_reservation_api.models.vehicle.EFuelType;
+import com.kigen.car_reservation_api.models.vehicle.ETransmissionType;
+import com.kigen.car_reservation_api.models.vehicle.EVehicle;
+import com.kigen.car_reservation_api.models.vehicle.EVehicleModel;
+import com.kigen.car_reservation_api.repositories.vehicle.VehicleDAO;
 import com.kigen.car_reservation_api.services.status.IStatus;
 import com.kigen.car_reservation_api.specifications.SpecBuilder;
 import com.kigen.car_reservation_api.specifications.SpecFactory;
@@ -141,7 +143,7 @@ public class SVehicle implements IVehicle {
         if (vehicleModelOpt.isPresent()) {
             vehicleModel = vehicleModelOpt.get();
         } else {
-            // Create ne vehicle model record
+            // Create new vehicle model record
             VehicleModelDTO vehicleModelDTO = new VehicleModelDTO();
             vehicleModelDTO.setVehicleMake(make);
             vehicleModelDTO.setVehicleModel(model);
@@ -151,9 +153,28 @@ public class SVehicle implements IVehicle {
     }
 
     @Override
-    public EVehicle update(EVehicle vehicle, VehicleDTO vehicleDTO) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+    public EVehicle update(EVehicle vehicle, VehicleDTO vehicleDTO) throws IllegalAccessException, 
+            IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+
+        String[] fields = {"RegistrationNumber", "Color", "EngineCapacity", "BookingAmount"};
+        for (String field : fields) {
+            Method getField = VehicleDTO.class.getMethod(String.format("get%s", field));
+            Object fieldValue = getField.invoke(vehicleDTO);
+
+            if (fieldValue != null) {
+                fieldValue = fieldValue.getClass().equals(String.class) ? ((String) fieldValue).trim() : fieldValue;
+                EVehicle.class.getMethod("set" + field, fieldValue.getClass()).invoke(vehicle, fieldValue);
+            }
+        }
+
+        vehicle.setModifiedOn(LocalDateTime.now());
+        setFuelType(vehicle, vehicleDTO.getFuelTypeId());
+        setStatus(vehicle, vehicleDTO.getStatusId());
+        setTransmissionType(vehicle, vehicleDTO.getTransmissionTypeId());
+        setVehicleModel(vehicle, vehicleDTO);
+
+        save(vehicle);
+        return vehicle;
     }
     
 }
