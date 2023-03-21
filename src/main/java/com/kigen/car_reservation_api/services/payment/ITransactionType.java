@@ -7,7 +7,7 @@ import org.springframework.data.domain.Page;
 
 import com.kigen.car_reservation_api.dtos.general.PageDTO;
 import com.kigen.car_reservation_api.dtos.payment.TransactionTypeDTO;
-import com.kigen.car_reservation_api.models.ETransactionType;
+import com.kigen.car_reservation_api.models.payment.ETransactionType;
 
 public interface ITransactionType {
     

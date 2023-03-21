@@ -7,7 +7,7 @@ import org.springframework.data.domain.Page;
 
 import com.kigen.car_reservation_api.dtos.general.PageDTO;
 import com.kigen.car_reservation_api.dtos.role.RoleDTO;
-import com.kigen.car_reservation_api.models.ERole;
+import com.kigen.car_reservation_api.models.user.ERole;
 
 public interface IRole {
     

@@ -14,8 +14,8 @@ import org.springframework.stereotype.Service;
 import com.kigen.car_reservation_api.dtos.general.PageDTO;
 import com.kigen.car_reservation_api.dtos.status.StatusDTO;
 import com.kigen.car_reservation_api.exceptions.InvalidInputException;
-import com.kigen.car_reservation_api.models.EStatus;
-import com.kigen.car_reservation_api.repositories.StatusDAO;
+import com.kigen.car_reservation_api.models.status.EStatus;
+import com.kigen.car_reservation_api.repositories.status.StatusDAO;
 import com.kigen.car_reservation_api.specifications.SpecBuilder;
 import com.kigen.car_reservation_api.specifications.SpecFactory;
 

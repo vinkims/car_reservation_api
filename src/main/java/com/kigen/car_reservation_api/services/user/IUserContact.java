@@ -3,8 +3,8 @@ package com.kigen.car_reservation_api.services.user;
 import java.util.Optional;
 
 import com.kigen.car_reservation_api.dtos.user.UserContactDTO;
-import com.kigen.car_reservation_api.models.EUser;
-import com.kigen.car_reservation_api.models.EUserContact;
+import com.kigen.car_reservation_api.models.user.EUser;
+import com.kigen.car_reservation_api.models.user.EUserContact;
 
 public interface IUserContact {
 

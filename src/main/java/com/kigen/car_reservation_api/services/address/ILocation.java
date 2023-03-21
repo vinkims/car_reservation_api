@@ -7,7 +7,7 @@ import org.springframework.data.domain.Page;
 
 import com.kigen.car_reservation_api.dtos.address.LocationDTO;
 import com.kigen.car_reservation_api.dtos.general.PageDTO;
-import com.kigen.car_reservation_api.models.ELocation;
+import com.kigen.car_reservation_api.models.address.ELocation;
 
 public interface ILocation {
     

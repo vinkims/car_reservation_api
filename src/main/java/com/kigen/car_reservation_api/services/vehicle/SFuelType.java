@@ -14,8 +14,8 @@ import org.springframework.stereotype.Service;
 import com.kigen.car_reservation_api.dtos.general.PageDTO;
 import com.kigen.car_reservation_api.dtos.vehicle.FuelTypeDTO;
 import com.kigen.car_reservation_api.exceptions.InvalidInputException;
-import com.kigen.car_reservation_api.models.EFuelType;
-import com.kigen.car_reservation_api.repositories.FuelTypeDAO;
+import com.kigen.car_reservation_api.models.vehicle.EFuelType;
+import com.kigen.car_reservation_api.repositories.vehicle.FuelTypeDAO;
 import com.kigen.car_reservation_api.specifications.SpecBuilder;
 import com.kigen.car_reservation_api.specifications.SpecFactory;
 

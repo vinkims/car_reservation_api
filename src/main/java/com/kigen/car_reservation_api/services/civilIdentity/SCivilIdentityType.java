@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 import com.kigen.car_reservation_api.dtos.civilIdentity.CivilIdentityTypeDTO;
 import com.kigen.car_reservation_api.dtos.general.PageDTO;
 import com.kigen.car_reservation_api.exceptions.InvalidInputException;
-import com.kigen.car_reservation_api.models.ECivilIdentityType;
-import com.kigen.car_reservation_api.repositories.CivilIdentityTypeDAO;
+import com.kigen.car_reservation_api.models.user.ECivilIdentityType;
+import com.kigen.car_reservation_api.repositories.user.CivilIdentityTypeDAO;
 import com.kigen.car_reservation_api.specifications.SpecBuilder;
 import com.kigen.car_reservation_api.specifications.SpecFactory;
 

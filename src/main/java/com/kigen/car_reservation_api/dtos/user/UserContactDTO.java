@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.kigen.car_reservation_api.annotations.IsContactValid;
 import com.kigen.car_reservation_api.dtos.contact.ContactTypeDTO;
-import com.kigen.car_reservation_api.models.EUserContact;
+import com.kigen.car_reservation_api.models.user.EUserContact;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.media.Schema.AccessMode;

@@ -10,9 +10,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.kigen.car_reservation_api.dtos.role.RoleDTO;
 import com.kigen.car_reservation_api.dtos.status.StatusDTO;
-import com.kigen.car_reservation_api.models.EUser;
-import com.kigen.car_reservation_api.models.EUserCivilIdentity;
-import com.kigen.car_reservation_api.models.EUserContact;
+import com.kigen.car_reservation_api.models.user.EUser;
+import com.kigen.car_reservation_api.models.user.EUserCivilIdentity;
+import com.kigen.car_reservation_api.models.user.EUserContact;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.media.Schema.AccessMode;

@@ -7,7 +7,7 @@ import org.springframework.data.domain.Page;
 
 import com.kigen.car_reservation_api.dtos.general.PageDTO;
 import com.kigen.car_reservation_api.dtos.vehicle.TransmissionTypeDTO;
-import com.kigen.car_reservation_api.models.ETransmissionType;
+import com.kigen.car_reservation_api.models.vehicle.ETransmissionType;
 
 public interface ITransmissionType {
     

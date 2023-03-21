@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.kigen.car_reservation_api.annotations.IsRoleNameValid;
-import com.kigen.car_reservation_api.models.ERole;
+import com.kigen.car_reservation_api.models.user.ERole;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.media.Schema.AccessMode;

@@ -8,7 +8,7 @@ import org.springframework.data.domain.Page;
 
 import com.kigen.car_reservation_api.dtos.general.PageDTO;
 import com.kigen.car_reservation_api.dtos.user.UserDTO;
-import com.kigen.car_reservation_api.models.EUser;
+import com.kigen.car_reservation_api.models.user.EUser;
 
 public interface IUser {
     
