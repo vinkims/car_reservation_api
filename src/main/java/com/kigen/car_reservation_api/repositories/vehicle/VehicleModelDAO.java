@@ -8,5 +8,5 @@ import com.kigen.car_reservation_api.models.vehicle.EVehicleModel;
 
 public interface VehicleModelDAO extends JpaRepository<EVehicleModel, Integer> {
     
-    Optional<EVehicleModel> findByMakeAndModel(String make, String model);
+    Optional<EVehicleModel> findByVehicleMakeAndVehicleModel(String vehicleMake, String vehicleModel);
 }
