@@ -69,7 +69,7 @@ public class ReservationDTO {
         setModifiedOn(reservation.getModifiedOn());
         setPickupDate(reservation.getPickupDate());
         setPickupLocation(new LocationDTO(reservation.getPickupLocation()));
-        setStatus(new StatusDTO(reservation.getStatus()))
+        setStatus(new StatusDTO(reservation.getStatus()));
         setUser(new UserDTO(reservation.getUser()));
         setVehicle(new VehicleDTO(reservation.getVehicle()));
     }

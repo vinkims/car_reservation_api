@@ -33,7 +33,7 @@ import com.kigen.car_reservation_api.services.payment.ITransactionType;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@Tag(name = "Transaction Type", description = "Transaction Type Endpoints")
+@Tag(name = "Transaction Types", description = "Transaction Type Endpoints")
 public class CTransactionType {
     
     @Autowired

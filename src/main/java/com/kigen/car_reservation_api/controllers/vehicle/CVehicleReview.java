@@ -33,7 +33,7 @@ import com.kigen.car_reservation_api.services.vehicle.IVehicleReview;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@Tag(name = "Vehicle Review", description = "Vehicle Review Endpoints")
+@Tag(name = "Vehicle Reviews", description = "Vehicle Review Endpoints")
 public class CVehicleReview {
     
     @Autowired
