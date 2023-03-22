@@ -186,6 +186,7 @@ CREATE TABLE IF NOT EXISTS transaction_types (
 CREATE TABLE IF NOT EXISTS payments (
     "id" SERIAL PRIMARY KEY,
     "created_on" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    "modified_on" TIMESTAMP,
     "external_transaction_id" VARCHAR NOT NULL UNIQUE,
     "amount" NUMERIC(11,4),
     "description" VARCHAR,
