@@ -7,7 +7,7 @@ import org.springframework.data.domain.Page;
 
 import com.kigen.car_reservation_api.dtos.address.CountryDTO;
 import com.kigen.car_reservation_api.dtos.general.PageDTO;
-import com.kigen.car_reservation_api.models.ECountry;
+import com.kigen.car_reservation_api.models.address.ECountry;
 
 public interface ICountry {
     

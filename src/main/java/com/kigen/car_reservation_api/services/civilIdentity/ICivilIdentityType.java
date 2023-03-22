@@ -7,7 +7,7 @@ import org.springframework.data.domain.Page;
 
 import com.kigen.car_reservation_api.dtos.civilIdentity.CivilIdentityTypeDTO;
 import com.kigen.car_reservation_api.dtos.general.PageDTO;
-import com.kigen.car_reservation_api.models.ECivilIdentityType;
+import com.kigen.car_reservation_api.models.user.ECivilIdentityType;
 
 public interface ICivilIdentityType {
     

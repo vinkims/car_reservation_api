@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.kigen.car_reservation_api.dtos.vehicle.VehicleModelDTO;
 import com.kigen.car_reservation_api.exceptions.InvalidInputException;
-import com.kigen.car_reservation_api.models.EVehicleModel;
-import com.kigen.car_reservation_api.repositories.VehicleModelDAO;
+import com.kigen.car_reservation_api.models.vehicle.EVehicleModel;
+import com.kigen.car_reservation_api.repositories.vehicle.VehicleModelDAO;
 
 @Service
 public class SVehicleModel implements IVehicleModel {

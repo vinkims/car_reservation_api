@@ -13,9 +13,9 @@ import org.springframework.stereotype.Service;
 import com.kigen.car_reservation_api.dtos.address.AreaDTO;
 import com.kigen.car_reservation_api.dtos.general.PageDTO;
 import com.kigen.car_reservation_api.exceptions.InvalidInputException;
-import com.kigen.car_reservation_api.models.EArea;
-import com.kigen.car_reservation_api.models.EMunicipality;
-import com.kigen.car_reservation_api.repositories.AreaDAO;
+import com.kigen.car_reservation_api.models.address.EArea;
+import com.kigen.car_reservation_api.models.address.EMunicipality;
+import com.kigen.car_reservation_api.repositories.address.AreaDAO;
 import com.kigen.car_reservation_api.specifications.SpecBuilder;
 import com.kigen.car_reservation_api.specifications.SpecFactory;
 

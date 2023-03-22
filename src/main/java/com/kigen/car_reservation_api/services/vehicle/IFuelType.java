@@ -7,7 +7,7 @@ import org.springframework.data.domain.Page;
 
 import com.kigen.car_reservation_api.dtos.general.PageDTO;
 import com.kigen.car_reservation_api.dtos.vehicle.FuelTypeDTO;
-import com.kigen.car_reservation_api.models.EFuelType;
+import com.kigen.car_reservation_api.models.vehicle.EFuelType;
 
 public interface IFuelType {
     

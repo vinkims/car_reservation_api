@@ -7,7 +7,7 @@ import org.springframework.data.domain.Page;
 
 import com.kigen.car_reservation_api.dtos.general.PageDTO;
 import com.kigen.car_reservation_api.dtos.status.StatusDTO;
-import com.kigen.car_reservation_api.models.EStatus;
+import com.kigen.car_reservation_api.models.status.EStatus;
 
 public interface IStatus {
     

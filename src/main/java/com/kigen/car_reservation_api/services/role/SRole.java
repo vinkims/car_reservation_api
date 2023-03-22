@@ -14,8 +14,8 @@ import org.springframework.stereotype.Service;
 import com.kigen.car_reservation_api.dtos.general.PageDTO;
 import com.kigen.car_reservation_api.dtos.role.RoleDTO;
 import com.kigen.car_reservation_api.exceptions.InvalidInputException;
-import com.kigen.car_reservation_api.models.ERole;
-import com.kigen.car_reservation_api.repositories.RoleDAO;
+import com.kigen.car_reservation_api.models.user.ERole;
+import com.kigen.car_reservation_api.repositories.user.RoleDAO;
 import com.kigen.car_reservation_api.specifications.SpecBuilder;
 import com.kigen.car_reservation_api.specifications.SpecFactory;
 

@@ -103,12 +103,13 @@ CREATE TABLE IF NOT EXISTS vehicles (
     "status_id" SMALLINT REFERENCES statuses("id") ON DELETE SET NULL
 );
 
--- reviews
-CREATE TABLE IF NOT EXISTS reviews (
+-- vehicle_reviews
+CREATE TABLE IF NOT EXISTS vehicle_reviews (
     "id" SERIAL PRIMARY KEY,
     "created_on" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     "modified_on" TIMESTAMP,
     "vehicle_id" INTEGER REFERENCES vehicles("id") ON DELETE SET NULL,
+    "user_id" INTEGER REFERENCES users("id") ON DELETE SET NULL,
     "review" INTEGER,
     "comment" VARCHAR,
     "status_id" SMALLINT REFERENCES statuses("id") ON DELETE SET NULL

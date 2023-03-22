@@ -7,7 +7,7 @@ import org.springframework.data.domain.Page;
 
 import com.kigen.car_reservation_api.dtos.address.AreaDTO;
 import com.kigen.car_reservation_api.dtos.general.PageDTO;
-import com.kigen.car_reservation_api.models.EArea;
+import com.kigen.car_reservation_api.models.address.EArea;
 
 public interface IArea {
     

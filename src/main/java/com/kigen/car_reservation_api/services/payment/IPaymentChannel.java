@@ -7,7 +7,7 @@ import org.springframework.data.domain.Page;
 
 import com.kigen.car_reservation_api.dtos.general.PageDTO;
 import com.kigen.car_reservation_api.dtos.payment.PaymentChannelDTO;
-import com.kigen.car_reservation_api.models.EPaymentChannel;
+import com.kigen.car_reservation_api.models.payment.EPaymentChannel;
 
 public interface IPaymentChannel {
     
