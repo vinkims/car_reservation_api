@@ -9,4 +9,6 @@ import lombok.Data;
 public class DefaultValueStatusConfig {
     
     private Integer activeId;
+
+    private Integer completeId;
 }

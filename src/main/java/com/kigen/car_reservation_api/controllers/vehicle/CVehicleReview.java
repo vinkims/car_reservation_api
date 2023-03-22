@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -38,7 +40,7 @@ public class CVehicleReview {
     private IVehicleReview sVehicleReview;
 
     @PostMapping(path = "/vehicle/review", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<SuccessResponse> createReview(@RequestBody VehicleReviewDTO vehicleReviewDTO) throws URISyntaxException {
+    public ResponseEntity<SuccessResponse> createReview(@Valid @RequestBody VehicleReviewDTO vehicleReviewDTO) throws URISyntaxException {
 
         EVehicleReview vehicleReview = sVehicleReview.create(vehicleReviewDTO);
 
@@ -80,7 +82,7 @@ public class CVehicleReview {
     }
 
     @PatchMapping(path = "/vehicle/review/{id}", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<SuccessResponse> updateReview(@PathVariable Integer id, @RequestBody VehicleReviewDTO vehicleReviewDTO) {
+    public ResponseEntity<SuccessResponse> updateReview(@PathVariable Integer id, @Valid @RequestBody VehicleReviewDTO vehicleReviewDTO) {
 
         Optional<EVehicleReview> reviewOpt = sVehicleReview.getById(id);
         if (!reviewOpt.isPresent()) {
