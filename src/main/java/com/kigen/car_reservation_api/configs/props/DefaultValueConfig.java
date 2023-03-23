@@ -9,6 +9,10 @@ import lombok.Data;
 public class DefaultValueConfig {
 
     private DefaultValueContactConfig contact;
+
+    private DefaultValueSecurityConfig security;
     
     private DefaultValueStatusConfig status;
+
+    private DefaultValueUserConfig user;
 }

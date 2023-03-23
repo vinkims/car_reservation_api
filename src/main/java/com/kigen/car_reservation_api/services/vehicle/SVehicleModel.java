@@ -45,7 +45,7 @@ public class SVehicleModel implements IVehicleModel {
 
     @Override
     public Optional<EVehicleModel> getByMakeAndModel(String make, String model) {
-        return vehicleModelDAO.findByMakeAndModel(make, model);
+        return vehicleModelDAO.findByVehicleMakeAndVehicleModel(make, model);
     }
 
     @Override
