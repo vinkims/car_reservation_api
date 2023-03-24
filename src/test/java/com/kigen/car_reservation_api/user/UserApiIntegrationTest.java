@@ -90,7 +90,7 @@ public class UserApiIntegrationTest {
         user.setId(11);
         user.setAge(32);
         user.setFirstName("Kiptoo");
-        user.setLastActiveOn("Mutai");
+        user.setLastName("Mutai");
         HttpEntity<String> entity = new HttpEntity<>(objectMapper.writeValueAsString(user), headers);
         ResponseEntity<EUser> response = restTemplate.exchange(
             createURLWithPort(), HttpMethod.POST, entity, EUser.class
