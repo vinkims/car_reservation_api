@@ -31,3 +31,5 @@ public class TestWebApplication {
             .andExpect(content().string(containsString("successfully fetched users")));
     }
 }
+
+// TODO: remove this class

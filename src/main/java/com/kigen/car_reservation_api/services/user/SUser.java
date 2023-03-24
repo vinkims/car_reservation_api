@@ -83,6 +83,11 @@ public class SUser implements IUser {
     }
 
     @Override
+    public List<EUser> getAll() {
+        return userDAO.findAll();
+    }
+
+    @Override
     public Optional<EUser> getByContactValue(String contactValue) {
         return userDAO.findByContactValue(contactValue);
     }

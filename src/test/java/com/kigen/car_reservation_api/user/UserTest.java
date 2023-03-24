@@ -19,3 +19,5 @@ public class UserTest {
         assertThat(cUser).isNotNull();
     }
 }
+
+// TODO: remove this class

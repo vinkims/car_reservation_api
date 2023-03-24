@@ -26,3 +26,5 @@ public class UserControllerTest {
             .contains("successfully fetched users");
     }
 }
+
+// TODO: remove this class
