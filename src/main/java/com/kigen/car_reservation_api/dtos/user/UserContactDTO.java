@@ -1,5 +1,6 @@
 package com.kigen.car_reservation_api.dtos.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -23,6 +24,7 @@ public class UserContactDTO {
     private LocalDateTime createdOn;
 
     @Schema(accessMode = AccessMode.READ_ONLY, hidden = true)
+    @JsonIgnoreProperties(value = {"regexValue", "description", "createdOn"})
     private ContactTypeDTO contactType;
 
     private Integer contactTypeId;

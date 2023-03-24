@@ -56,7 +56,7 @@ public class CVehicle {
 
         List<String> allowableFields = new ArrayList<>(Arrays.asList(
             "createdOn", "modifiedOn", "lastActiveOn", "registrationNumber", "color", "engineCapacity",
-            "bookingAmount", "transmissionType.id", "fuelType.id", "status.id"
+            "bookingAmount", "transmissionType.id", "fuelType.id", "status.id", "model.vehiclemake", "model.vehicleModel"
         ));
 
         Page<EVehicle> vehicles = sVehicle.getPaginatedList(pageDTO, allowableFields);

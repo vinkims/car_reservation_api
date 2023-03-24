@@ -12,7 +12,7 @@ import javax.persistence.Id;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity(name = "contact_type")
+@Entity(name = "contact_types")
 @Data
 @NoArgsConstructor
 public class EContactType implements Serializable {
