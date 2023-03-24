@@ -57,7 +57,7 @@ public class SReservation implements IReservation {
         EReservation reservation = new EReservation();
         reservation.setCreatedOn(LocalDateTime.now());
         reservation.setDropoffDate(reservationDTO.getDropoffDate());
-        reservation.setPickupDate(reservation.getPickupDate());
+        reservation.setPickupDate(reservationDTO.getPickupDate());
         
         setDropoffLocation(reservation, reservationDTO.getDropoffLocationId());
         setPickupLocation(reservation, reservationDTO.getPickupLocationId());
