@@ -10,6 +10,10 @@ public class DefaultValueConfig {
 
     private DefaultValueContactConfig contact;
 
+    private DefaultValueLogConfig logging;
+
+    private DefaultValueRoleConfig role;
+
     private DefaultValueSecurityConfig security;
     
     private DefaultValueStatusConfig status;

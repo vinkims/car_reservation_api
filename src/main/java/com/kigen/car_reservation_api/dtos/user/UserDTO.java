@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.kigen.car_reservation_api.dtos.role.RoleDTO;
@@ -41,6 +42,7 @@ public class UserDTO {
     private List<@Valid UserCivilIdentityDTO> civilIdentities;
 
     @Schema(accessMode = AccessMode.READ_ONLY, hidden = true)
+    @JsonIgnoreProperties(value = {"description", "createdOn"})
     private RoleDTO role;
 
     private Integer roleId;
@@ -56,6 +58,7 @@ public class UserDTO {
     private LocalDateTime lastActiveOn;
 
     @Schema(accessMode = AccessMode.READ_ONLY, hidden = true)
+    @JsonIgnoreProperties(value = {"description", "createdOn"})
     private StatusDTO status;
 
     private Integer statusId;
@@ -67,6 +70,7 @@ public class UserDTO {
         setFirstName(user.getFirstName());
         setId(user.getId());
         setLastActiveOn(user.getLastActiveOn());
+        setLastName(user.getLastName());
         setMiddleName(user.getMiddleName());
         setModifiedOn(user.getModifiedOn());
         setRole(new RoleDTO(user.getRole()));

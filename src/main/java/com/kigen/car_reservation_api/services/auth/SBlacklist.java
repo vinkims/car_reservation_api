@@ -1,5 +1,7 @@
 package com.kigen.car_reservation_api.services.auth;
 
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,8 +22,14 @@ public class SBlacklist implements IBlacklist {
 
     @Override
     public EBlacklistToken create(String token, EUser user) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'create'");
+
+        EBlacklistToken blacklistToken = new EBlacklistToken();
+        blacklistToken.setCreatedOn(LocalDateTime.now());
+        blacklistToken.setTokenHash(token.hashCode());
+        blacklistToken.setUser(user);
+
+        save(blacklistToken);
+        return blacklistToken;
     }
 
     @Override
