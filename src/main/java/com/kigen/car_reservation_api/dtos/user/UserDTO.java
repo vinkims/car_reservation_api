@@ -73,8 +73,12 @@ public class UserDTO {
         setLastName(user.getLastName());
         setMiddleName(user.getMiddleName());
         setModifiedOn(user.getModifiedOn());
-        setRole(new RoleDTO(user.getRole()));
-        setStatus(new StatusDTO(user.getStatus()));
+        if (user.getRole() != null) {
+            setRole(new RoleDTO(user.getRole()));
+        }
+        if (user.getStatus() != null) {
+            setStatus(new StatusDTO(user.getStatus())); 
+        }
     }
 
     @Schema(accessMode = AccessMode.READ_ONLY, hidden = true)
