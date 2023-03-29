@@ -16,6 +16,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
@@ -26,17 +27,26 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kigen.car_reservation_api.controllers.user.CUser;
 import com.kigen.car_reservation_api.dtos.user.UserDTO;
 import com.kigen.car_reservation_api.models.user.EUser;
+import com.kigen.car_reservation_api.services.auth.SUserDetails;
 import com.kigen.car_reservation_api.services.user.SUser;
+import com.kigen.car_reservation_api.utils.JwtUtil;
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(CUser.class)
+@AutoConfigureMockMvc(addFilters = false)
 public class UserControllerUnitTest {
     
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
-    private SUser sUser;
+    SUser sUser;
+
+    @MockBean
+    JwtUtil jwtUtil;
+
+    @MockBean
+    SUserDetails sUserDetails;
 
     private EUser user;
 
