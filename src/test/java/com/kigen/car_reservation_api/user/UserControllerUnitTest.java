@@ -30,7 +30,7 @@ import com.kigen.car_reservation_api.services.user.SUser;
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(CUser.class)
-public class UserControllerUnittest {
+public class UserControllerUnitTest {
     
     @Autowired
     private MockMvc mockMvc;
