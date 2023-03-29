@@ -14,6 +14,8 @@ public interface IUser {
     
     EUser create(UserDTO userDTO);
 
+    public List<EUser> getAll();
+
     Optional<EUser> getByContactValue(String contactValue);
 
     Optional<EUser> getById(Integer userId);
