@@ -14,6 +14,7 @@ services:
       - ./:/app
     depends_on:
       - pgsqlserver
+      - flyway_car_res
 
   flyway_car_res:
     container_name: flyway_car_res
