@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -44,6 +46,7 @@ public class SCivilIdentityType implements ICivilIdentityType {
     }
 
     @Override
+    @Caching(cacheable = {@Cacheable(cacheNames = "civilIdentityTypes", unless = "#result == null")})
     public Optional<ECivilIdentityType> getById(Integer civilIdentityTypeId) {
         return civilIdentityTypeDAO.findById(civilIdentityTypeId);
     }

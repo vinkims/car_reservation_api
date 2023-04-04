@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -46,6 +48,7 @@ public class SRole implements IRole {
     }
 
     @Override
+    @Caching(cacheable = {@Cacheable(cacheNames = "roles", unless = "#result == null")})
     public Optional<ERole> getById(Integer roleId) {
         return roleDAO.findById(roleId);
     }
