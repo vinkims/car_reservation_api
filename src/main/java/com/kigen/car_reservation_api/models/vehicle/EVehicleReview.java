@@ -18,7 +18,7 @@ import com.kigen.car_reservation_api.models.user.EUser;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity(name = "vehicle_review")
+@Entity(name = "vehicle_reviews")
 @Data
 @NoArgsConstructor
 public class EVehicleReview implements Serializable {

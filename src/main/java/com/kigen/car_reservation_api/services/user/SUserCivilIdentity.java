@@ -35,6 +35,7 @@ public class SUserCivilIdentity implements IUserCivilIdentity {
         userCivilIdentity.setCivilIdentityValue(userCivilIdentityDTO.getCivilIdentityValue());
         userCivilIdentity.setCreatedOn(LocalDateTime.now());
         userCivilIdentity.setUser(user);
+        setCivilIdentityType(userCivilIdentity, userCivilIdentityDTO.getCivilIdentityTypeId());
 
         save(userCivilIdentity);
         return userCivilIdentity;

@@ -31,18 +31,18 @@ public class ReservationDTO {
     private LocalDateTime modifiedOn;
 
     @Schema(accessMode = AccessMode.READ_ONLY, hidden = true)
-    @JsonIgnoreProperties(value = {"createdOn", "contacts", "civilIdentites", "role", "modifiedOn", "lastActiveOn", "status"})
+    @JsonIgnoreProperties(value = {"createdOn", "contacts", "civilIdentities", "role", "modifiedOn", "lastActiveOn", "status"})
     private UserDTO user;
 
     private Integer userId;
 
     @Schema(accessMode = AccessMode.READ_ONLY, hidden = true)
-    @JsonIgnoreProperties(value = {"createdOn", "bookingAmount", "color", "status", "lastActiveOn", "modifiedOn"})
-    private VehicleDTO vehicle;
+    private VehicleBasicDTO vehicle;
 
     private Integer vehicleId;
 
     @Schema(accessMode = AccessMode.READ_ONLY, hidden = true)
+    @JsonIgnoreProperties(value = {"area", "createdOn"})
     private LocationDTO pickupLocation;
 
     private Integer pickupLocationId;
@@ -50,6 +50,7 @@ public class ReservationDTO {
     private Date pickupDate;
 
     @Schema(accessMode = AccessMode.READ_ONLY, hidden = true)
+    @JsonIgnoreProperties(value = {"area", "createdOn"})
     private LocationDTO dropoffLocation;
 
     private Integer dropoffLocationId;
@@ -57,6 +58,7 @@ public class ReservationDTO {
     private Date dropoffDate;
 
     @Schema(accessMode = AccessMode.READ_ONLY, hidden = true)
+    @JsonIgnoreProperties(value = {"description", "createdOn"})
     private StatusDTO status;
 
     private Integer statusId;
@@ -71,7 +73,7 @@ public class ReservationDTO {
         setPickupLocation(new LocationDTO(reservation.getPickupLocation()));
         setStatus(new StatusDTO(reservation.getStatus()));
         setUser(new UserDTO(reservation.getUser()));
-        setVehicle(new VehicleDTO(reservation.getVehicle()));
+        setVehicle(new VehicleBasicDTO(reservation.getVehicle()));
     }
 
 }

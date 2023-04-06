@@ -39,18 +39,20 @@ public class VehicleReviewDTO {
     private String comment;
 
     @Schema(accessMode = AccessMode.READ_ONLY, hidden = true)
-    private VehicleDTO vehicle;
+    @JsonIgnoreProperties(value = {"reservations", "createdOn", "status", "bookingAmount"})
+    private VehicleBasicDTO vehicle;
 
     @NotNull
     private Integer vehicleId;
 
     @Schema(accessMode = AccessMode.READ_ONLY, hidden = true)
-    @JsonIgnoreProperties(value = {"createdOn", "contacts", "civilIdentites", "role", "modifiedOn", "lastActiveOn", "status"})
+    @JsonIgnoreProperties(value = {"createdOn", "contacts", "civilIdentities", "role", "modifiedOn", "lastActiveOn", "status", "id"})
     private UserDTO user;
 
     private Integer userId;
 
     @Schema(accessMode = AccessMode.READ_ONLY, hidden = true)
+    @JsonIgnoreProperties(value = {"createdOn", "description"})
     private StatusDTO status;
 
     private Integer statusId;
@@ -65,6 +67,6 @@ public class VehicleReviewDTO {
             setUser(new UserDTO(vehicleReview.getUser()));
         }
         setStatus(new StatusDTO(vehicleReview.getStatus()));
-        setVehicle(new VehicleDTO(vehicleReview.getVehicle()));
+        setVehicle(new VehicleBasicDTO(vehicleReview.getVehicle()));
     }
 }

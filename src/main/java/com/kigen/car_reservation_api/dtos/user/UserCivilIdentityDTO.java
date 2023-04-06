@@ -2,6 +2,7 @@ package com.kigen.car_reservation_api.dtos.user;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.kigen.car_reservation_api.annotations.IsCivilIdentityValid;
@@ -22,9 +23,10 @@ public class UserCivilIdentityDTO {
     private LocalDateTime createdOn;
 
     @Schema(accessMode = AccessMode.READ_ONLY, hidden = true)
+    @JsonIgnoreProperties(value = {"description", "createdOn"})
     private CivilIdentityTypeDTO civilIdentityType;
 
-    private Integer civilIdentitytypeId;
+    private Integer civilIdentityTypeId;
 
     @IsCivilIdentityValid
     private String civilIdentityValue;

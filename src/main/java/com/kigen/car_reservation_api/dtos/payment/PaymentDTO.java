@@ -3,6 +3,7 @@ package com.kigen.car_reservation_api.dtos.payment;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.kigen.car_reservation_api.annotations.IsPaymentValid;
@@ -39,21 +40,25 @@ public class PaymentDTO {
     private String reference;
 
     @Schema(accessMode = AccessMode.READ_ONLY, hidden = true)
+    @JsonIgnoreProperties(value = {"description", "createdOn"})
     private TransactionTypeDTO transactionType;
 
     private Integer transactionTypeId;
 
     @Schema(accessMode = AccessMode.READ_ONLY, hidden = true)
+    @JsonIgnoreProperties(value = {"description", "createdOn"})
     private PaymentChannelDTO paymentChannel;
 
     private Integer paymentChannelId;
 
     @Schema(accessMode = AccessMode.READ_ONLY, hidden = true)
+    @JsonIgnoreProperties(value = {"createdOn", "modifiedOn", "civilIdentities", "contacts", "role", "age", "status"})
     private UserDTO user;
 
     private Integer userId;
 
     @Schema(accessMode = AccessMode.READ_ONLY, hidden = true)
+    @JsonIgnoreProperties(value = {"description", "createdOn"})
     private StatusDTO status;
 
     private Integer statusId;
