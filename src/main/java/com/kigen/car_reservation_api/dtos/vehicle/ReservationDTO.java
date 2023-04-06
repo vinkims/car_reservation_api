@@ -1,7 +1,7 @@
 package com.kigen.car_reservation_api.dtos.vehicle;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -47,7 +47,7 @@ public class ReservationDTO {
 
     private Integer pickupLocationId;
 
-    private Date pickupDate;
+    private LocalDate pickupDate;
 
     @Schema(accessMode = AccessMode.READ_ONLY, hidden = true)
     @JsonIgnoreProperties(value = {"area", "createdOn"})
@@ -55,7 +55,7 @@ public class ReservationDTO {
 
     private Integer dropoffLocationId;
 
-    private Date dropoffDate;
+    private LocalDate dropoffDate;
 
     @Schema(accessMode = AccessMode.READ_ONLY, hidden = true)
     @JsonIgnoreProperties(value = {"description", "createdOn"})
