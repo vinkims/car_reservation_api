@@ -51,6 +51,22 @@ public class SReservation implements IReservation {
     @Autowired
     private SpecFactory specFactory;
 
+    /**
+     * Checks if the vehicle is available at the provided pockup date
+     */
+    public void checkVehicleAvailability(EVehicle vehicle, ReservationDTO reservationDTO) {
+
+        // Check if vehicle has active reservations
+        List<EReservation> reservations = vehicle.getReservations();
+        if (!reservations.isEmpty()) {
+            for (EReservation reservation : reservations) {
+                if (reservationDTO.getPickupDate().isBefore(reservation.getDropoffDate())) {
+                    throw new InvalidInputException("The vehicle has been reserved for the date provided", "PickupDate");
+                }
+            }
+        }
+    }
+
     @Override
     public EReservation create(ReservationDTO reservationDTO) {
 
@@ -66,7 +82,7 @@ public class SReservation implements IReservation {
         setStatus(reservation, statusId);
 
         setUser(reservation, reservationDTO.getUserId());
-        setVehicle(reservation, reservationDTO.getVehicleId());
+        setVehicle(reservation, reservationDTO);
 
         save(reservation);
         return reservation;
@@ -138,10 +154,11 @@ public class SReservation implements IReservation {
         reservation.setUser(user);
     }
 
-    public void setVehicle(EReservation reservation, Integer vehicleId) {
-        if (vehicleId == null) { return; }
+    public void setVehicle(EReservation reservation, ReservationDTO reservationDTO) {
+        if (reservationDTO.getVehicleId() == null) { return; }
 
-        EVehicle vehicle = sVehicle.getById(vehicleId, true);
+        EVehicle vehicle = sVehicle.getById(reservationDTO.getVehicleId(), true);
+        checkVehicleAvailability(vehicle, reservationDTO);
         reservation.setVehicle(vehicle);
     }
 
@@ -158,7 +175,7 @@ public class SReservation implements IReservation {
         setPickupLocation(reservation, reservationDTO.getPickupLocationId());
         setStatus(reservation, reservationDTO.getStatusId());
         setUser(reservation, reservationDTO.getUserId());
-        setVehicle(reservation, reservationDTO.getVehicleId());
+        setVehicle(reservation, reservationDTO);
 
         save(reservation);
         return reservation;

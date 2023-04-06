@@ -1,8 +1,8 @@
 package com.kigen.car_reservation_api.models.vehicle;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,7 +31,7 @@ public class EReservation implements Serializable {
     private LocalDateTime createdOn;
 
     @Column(name = "dropoff_date")
-    private Date dropoffDate;
+    private LocalDate dropoffDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "dropoff_location_id", referencedColumnName = "id")
@@ -46,7 +46,7 @@ public class EReservation implements Serializable {
     private LocalDateTime modifiedOn;
 
     @Column(name = "pickup_date")
-    private Date pickupDate;
+    private LocalDate pickupDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pickup_location_id", referencedColumnName = "id")
