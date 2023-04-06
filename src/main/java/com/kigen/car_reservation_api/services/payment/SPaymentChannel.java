@@ -56,7 +56,7 @@ public class SPaymentChannel implements IPaymentChannel {
     @Override
     public EPaymentChannel getById(Integer paymentChannelId, Boolean handleException) {
         Optional<EPaymentChannel> paymentChannel = getById(paymentChannelId);
-        if (paymentChannel.isPresent() && handleException) {
+        if (!paymentChannel.isPresent() && handleException) {
             throw new InvalidInputException("payment channel with specified id not found", "paymentChannelId");
         }
         return paymentChannel.get();

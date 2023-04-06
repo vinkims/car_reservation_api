@@ -31,14 +31,19 @@ public class UserDTO {
     @Schema(accessMode = AccessMode.READ_ONLY, hidden = true)
     private LocalDateTime createdOn;
 
+    @Schema(accessMode = AccessMode.READ_ONLY, hidden = true)
+    private LocalDateTime modifiedOn;
+
     private String firstName;
 
     private String middleName;
 
     private String lastName;
 
+    @JsonIgnoreProperties(value = {"createdOn"})
     private List<@Valid UserContactDTO> contacts;
 
+    @JsonIgnoreProperties(value = {"createdOn"})
     private List<@Valid UserCivilIdentityDTO> civilIdentities;
 
     @Schema(accessMode = AccessMode.READ_ONLY, hidden = true)
@@ -52,9 +57,6 @@ public class UserDTO {
     private Integer age;
 
     @Schema(accessMode = AccessMode.READ_ONLY, hidden = true)
-    private LocalDateTime modifiedOn;
-
-    @Schema(accessMode = AccessMode.READ_ONLY, hidden = true)
     private LocalDateTime lastActiveOn;
 
     @Schema(accessMode = AccessMode.READ_ONLY, hidden = true)
@@ -65,6 +67,7 @@ public class UserDTO {
 
     public UserDTO(EUser user) {
         setAge(user.getAge());
+        setUserCivilIdentityData(user.getCivilIdentities());
         setUserContactsData(user.getContacts());
         setCreatedOn(user.getCreatedOn());
         setFirstName(user.getFirstName());
