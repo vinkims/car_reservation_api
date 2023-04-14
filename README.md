@@ -39,7 +39,7 @@ The API documentation can be accessed at `http://localhost:5030/api/v1/swagger-u
 
 This is the database structure: 
 
-![Alt db_doc](db_output/diagrams/summary/relationships.real.large.png)
+![Alt db_doc](src/main/resources/documentation/diagrams/summary/relationships.real.large.png)
 
 ## Usage
 
