@@ -30,9 +30,6 @@ An API for managing vehicle reservations/ hires.
 - Once the build is completed, run the resulting jar file as stored in the `target` directory; use the command: `java -jar $jar_path --spring.config.location=$prop_file` where `prop_file` is the path to the application.properties copy you made earlier.
 
 #### Docker build
-- Build the project using the cmd: `mvn clean package -DskipTests` where -DskipTests tells maven to skip tsting the application state.
-- Once the build is completed, the resulting jar file is stored in the `target` directory.
-- Update the `Dockerfile` with the name of your jar file.
 - Build the Docker image. In the project directory run `docker compose build`
 - To run the multi-container application run `docker compose up - d` where -d runs the containers in detached mode.
 - To view the logs run `docker compose logs <container_name>`
