@@ -37,6 +37,8 @@ An API for managing vehicle reservations/ hires.
 
 The API documentation can be accessed at `http://localhost:5030/api/v1/swagger-ui/index.html`
 
+The database documentation can be accessed at `http://localhost:5030/api/v1/documentation/index.html`
+
 This is the database structure: 
 
 ![Alt db_doc](src/main/resources/documentation/diagrams/summary/relationships.real.large.png)
