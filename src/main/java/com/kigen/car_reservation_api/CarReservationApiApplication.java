@@ -9,7 +9,11 @@ import org.springframework.cache.annotation.EnableCaching;
 public class CarReservationApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CarReservationApiApplication.class, args);
+		try {
+			SpringApplication.run(CarReservationApiApplication.class, args);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }
