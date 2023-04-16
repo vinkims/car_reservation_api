@@ -2,6 +2,7 @@ package com.kigen.car_reservation_api.configs;
 
 import com.kigen.car_reservation_api.handlers.ApiAccessDeniedHandler;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.audit.InMemoryAuditEventRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -29,6 +30,7 @@ public class SecurityConfig {
             .antMatchers("/user/auth/sign-out").authenticated()
             .antMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html", "/swagger-resources/**", "/webjars/**", "/configuration/ui").permitAll()
             .antMatchers("/documentation/**").permitAll()
+            .antMatchers("/actuator/**").permitAll()
             .anyRequest().authenticated();
         
         http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
@@ -50,5 +52,10 @@ public class SecurityConfig {
     @Bean
     ApiAccessDeniedHandler jwtAccessDeniedHandler() {
         return new ApiAccessDeniedHandler();
+    }
+
+    @Bean
+    public InMemoryAuditEventRepository repository() {
+        return new InMemoryAuditEventRepository();
     }
 }
