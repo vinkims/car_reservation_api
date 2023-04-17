@@ -5,6 +5,8 @@ vehicle_reviews
 user_contacts
 user_civil_identities
 blacklist_tokens
+audit_event_data
+audit_events
 vehicles
 locations
 users
@@ -20,4 +22,5 @@ fuel_types
 countries
 contact_types
 civil_identity_types
+audit_event_types
 statuses

@@ -6,9 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.audit.AuditEvent;
 import org.springframework.boot.actuate.audit.listener.AuditApplicationEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Component;
 
 import com.kigen.car_reservation_api.dtos.audit_event.AuditEventDTO;
+import com.kigen.car_reservation_api.dtos.audit_event.AuditEventDataDTO;
+import com.kigen.car_reservation_api.dtos.audit_event.AuditEventTypeDTO;
 import com.kigen.car_reservation_api.services.audit_event.IAuditEvent;
 
 @Component
@@ -33,10 +36,29 @@ public class AuditApplicationEventsListener {
 
         try {
             AuditEventDTO auditEventDTO = new AuditEventDTO();
-            auditEventDTO.setEventData(auditEvent.getData());
-            auditEventDTO.setEventType(auditEvent.getType());
+            auditEventDTO.setAuditEventTypeName(auditEvent.getType());
             auditEventDTO.setPrincipal(auditEvent.getPrincipal());
-            auditEventDTO.setTimestamp(auditEvent.getTimestamp().toString());
+
+            if (auditEvent.getData() != null) {
+                AuditEventDataDTO eventDataDTO = new AuditEventDataDTO();
+                if (auditEvent.getData().get("type") != null) {
+                    eventDataDTO.setDataType((String) auditEvent.getData().get("type"));
+                }
+                if (auditEvent.getData().get("message") != null) {
+                    eventDataDTO.setEventMessage((String) auditEvent.getData().get("message"));
+                }
+                if (auditEvent.getData().get("details") != null) {
+                    WebAuthenticationDetails authDetails = (WebAuthenticationDetails) auditEvent.getData().get("details");
+                    eventDataDTO.setRemoteAddress(authDetails.getRemoteAddress());
+                    eventDataDTO.setSessionId(authDetails.getSessionId());
+                }
+                auditEventDTO.setEventData(eventDataDTO);
+            }
+
+            AuditEventTypeDTO eventTypeDTO = new AuditEventTypeDTO();
+            eventTypeDTO.setName(auditEvent.getType());
+            auditEventDTO.setEventType(eventTypeDTO);
+
             sAuditEvent.create(auditEventDTO);
         } catch (Exception e) {
             logger.error("\n[LOCATION] - AuditApplicationEventsListener.onAuditEvent\n[CAUSE] - {}\n[MSG] - {}",

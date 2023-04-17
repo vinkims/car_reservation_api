@@ -1,10 +1,7 @@
 package com.kigen.car_reservation_api.services.audit_event;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +13,13 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import com.kigen.car_reservation_api.dtos.audit_event.AuditEventDTO;
+import com.kigen.car_reservation_api.dtos.audit_event.AuditEventDataDTO;
+import com.kigen.car_reservation_api.dtos.audit_event.AuditEventTypeDTO;
 import com.kigen.car_reservation_api.dtos.general.PageDTO;
 import com.kigen.car_reservation_api.exceptions.InvalidInputException;
 import com.kigen.car_reservation_api.models.audit_events.EAuditEvent;
+import com.kigen.car_reservation_api.models.audit_events.EAuditEventData;
+import com.kigen.car_reservation_api.models.audit_events.EAuditEventType;
 import com.kigen.car_reservation_api.models.status.EStatus;
 import com.kigen.car_reservation_api.repositories.audit_event.AuditEventDAO;
 import com.kigen.car_reservation_api.services.status.IStatus;
@@ -35,6 +36,12 @@ public class SAuditEvent implements IAuditEvent {
     private AuditEventDAO auditEventDAO;
 
     @Autowired
+    private IAuditEventData sAuditEventData;
+
+    @Autowired
+    private IAuditEventType sAuditEventType;
+
+    @Autowired
     private IStatus sStatus;
 
     @Autowired
@@ -45,14 +52,14 @@ public class SAuditEvent implements IAuditEvent {
 
         EAuditEvent auditEvent = new EAuditEvent();
         auditEvent.setCreatedOn(LocalDateTime.now());
-        auditEvent.setEventData(auditEventDTO.getEventData());
-        auditEvent.setEventType(auditEventDTO.getEventType());
         auditEvent.setPrincipal(auditEventDTO.getPrincipal());
+        setEventType(auditEvent, auditEventDTO);
         Integer statusId = auditEventDTO.getStatusId() == null ? activeStatusId : auditEventDTO.getStatusId();
         setStatus(auditEvent, statusId);
-        auditEvent.setTimestamp(auditEventDTO.getTimestamp());
 
         save(auditEvent);
+        setEventData(auditEvent, auditEventDTO.getEventData());
+
         return auditEvent;
     }
 
@@ -92,6 +99,30 @@ public class SAuditEvent implements IAuditEvent {
         auditEventDAO.save(auditEvent);
     }
 
+    public void setEventData(EAuditEvent auditEvent, AuditEventDataDTO eventDataDTO) {
+        if (eventDataDTO == null) { return; }
+
+        EAuditEventData eventData = sAuditEventData.create(eventDataDTO, auditEvent);
+        auditEvent.setEventData(eventData);
+    }
+
+    public void setEventType(EAuditEvent auditEvent, AuditEventDTO auditEventDTO) {
+        if (auditEventDTO.getAuditEventTypeName() == null) { return; }
+
+        String eventTypeName = auditEventDTO.getAuditEventTypeName();
+        Optional<EAuditEventType> auditEventTypeOpt = sAuditEventType.getByName(eventTypeName);
+        EAuditEventType auditEventType;
+        if (auditEventTypeOpt.isPresent()) {
+            auditEventType = auditEventTypeOpt.get();
+        } else {
+            // Create new event type 
+            AuditEventTypeDTO eventTypeDTO = new AuditEventTypeDTO();
+            eventTypeDTO.setName(eventTypeName);
+            auditEventType = sAuditEventType.create(eventTypeDTO);
+        }
+        auditEvent.setEventType(auditEventType);
+    }
+
     public void setStatus(EAuditEvent auditEvent, Integer statusId) {
         if (statusId == null) { return; }
 
@@ -100,23 +131,18 @@ public class SAuditEvent implements IAuditEvent {
     }
 
     @Override
-    public EAuditEvent update(EAuditEvent auditEvent, AuditEventDTO auditEventDTO) throws IllegalAccessException, 
-        IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+    public EAuditEvent update(EAuditEvent auditEvent, AuditEventDTO auditEventDTO) {
 
-        String[] fields = {"Principal", "EventType", "EventData", "Timestamp"};
-        for (String field : fields) {
-            Method getField = AuditEventDTO.class.getMethod(String.format("get%s", field));
-            Object fieldValue = getField.invoke(auditEventDTO);
-
-            if (fieldValue != null) {
-                fieldValue = fieldValue.getClass().equals(String.class) ? ((String) fieldValue).trim() : fieldValue;
-                EAuditEvent.class.getMethod("set" + field, fieldValue.getClass()).invoke(auditEvent, fieldValue);
-            }
+        if (auditEventDTO.getPrincipal() != null) {
+            auditEvent.setPrincipal(auditEventDTO.getPrincipal());
         }
 
+        setEventType(auditEvent, auditEventDTO);
         setStatus(auditEvent, auditEventDTO.getStatusId());
 
         save(auditEvent);
+        setEventData(auditEvent, auditEventDTO.getEventData());
+
         return auditEvent;
     }
     
