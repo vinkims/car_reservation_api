@@ -81,8 +81,7 @@ public class CAuditEvent {
     }
 
     @PatchMapping(path = "/audit_event/{eventId}", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<SuccessResponse> updateAuditEvent(@PathVariable Integer eventId, @RequestBody AuditEventDTO auditEventDTO) 
-            throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+    public ResponseEntity<SuccessResponse> updateAuditEvent(@PathVariable Integer eventId, @RequestBody AuditEventDTO auditEventDTO) {
 
         Optional<EAuditEvent> auditEventOpt = sAuditEvent.getById(eventId);
         if (!auditEventOpt.isPresent()) {

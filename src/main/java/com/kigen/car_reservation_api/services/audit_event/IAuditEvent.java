@@ -1,8 +1,6 @@
 package com.kigen.car_reservation_api.services.audit_event;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
@@ -23,6 +21,5 @@ public interface IAuditEvent {
 
     void save(EAuditEvent auditEvent);
 
-    EAuditEvent update(EAuditEvent auditEvent, AuditEventDTO auditEventDTO) throws IllegalAccessException, 
-        IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException;
+    EAuditEvent update(EAuditEvent auditEvent, AuditEventDTO auditEventDTO);
 }

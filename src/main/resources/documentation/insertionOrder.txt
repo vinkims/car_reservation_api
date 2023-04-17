@@ -1,4 +1,5 @@
 statuses
+audit_event_types
 civil_identity_types
 contact_types
 countries
@@ -14,6 +15,8 @@ areas
 users
 locations
 vehicles
+audit_events
+audit_event_data
 blacklist_tokens
 user_civil_identities
 user_contacts
