@@ -31,3 +31,11 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Logs ###
+logs/
+*.log
+
+### application.properties ###
+application-dev.properties
+application-test.properties
